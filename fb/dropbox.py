@@ -19,11 +19,10 @@ def callback():
 @app.route('/access_token')
 def fb_accessToken():
 	token = request.args.get('token','')
-	raw_data = urllib2.urlopen("https://api.dropbox.com/1/oauth2/token=%s" % token).read()
+	raw_data = urllib2.urlopen("https://api.dropbox.com/1/oauth2/token?%s" % token).read()
 	data = json.loads(raw_data)	
-	token = data['access_token']
-	info = requests.get('https://api.dropbox.com/1/account/info', headers={'Authorization': 'Bearer %s' % token}).json()
-	return 'Successfully authenticated as %s.' % info['display_name']
+	return data
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",debug=True)
