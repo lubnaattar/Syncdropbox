@@ -1,5 +1,7 @@
 <script>
+alert("callback");
+alert(window.location.href.split('#')[1].split('&')[0].split('=')[1]); 
 var atoken = window.location.href.split('#')[1].split('&')[0].split('=')[1];
+alert(atoken);
 window.location="access_token?token="+atoken;
-alert('acess token =' + atoken);
 </script>
